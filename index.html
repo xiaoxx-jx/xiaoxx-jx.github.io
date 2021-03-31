@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>Always Believe That Good Things Are About To Happen !</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="肖新信的博客">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Always Believe That Good Things Are About To Happen !">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Always Believe That Good Things Are About To Happen !">
 <meta property="og:description" content="肖新信的博客">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="xiaoxx">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Always Believe That Good Things Are About To Happen !" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -44,7 +44,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Always Believe That Good Things Are About To Happen !</a>
       </h1>
       
     </div>
@@ -72,6 +72,67 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-2-两数相加" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/31/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" class="article-date">
+  <time class="dt-published" datetime="2021-03-31T08:09:38.000Z" itemprop="datePublished">2021-03-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/31/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/">14-最长公共前缀</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。</strong></p>
+<p><strong>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</strong></p>
+<p><strong>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</strong></p>
+<p><em>medium</em></p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line"></span><br><span class="line">输出：7 -&gt; 0 -&gt; 8</span><br><span class="line"></span><br><span class="line">原因：342 + 465 &#x3D; 807</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Java-方式一："><a href="#Java-方式一：" class="headerlink" title="Java 方式一："></a>Java 方式一：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode res = <span class="keyword">new</span> ListNode();</span><br><span class="line">        ListNode resTemp = res;</span><br><span class="line">        <span class="keyword">int</span> nextSum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>; <span class="comment">// 标识相加进1</span></span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> p;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</span><br><span class="line">                p = l1.val + l2.val;</span><br><span class="line">                res.val = p % <span class="number">10</span>;</span><br><span class="line">                nextSum = p / <span class="number">10</span>;</span><br><span class="line">                flag++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                p = l1.val + l2.val + nextSum;</span><br><span class="line">                resTemp.next = <span class="keyword">new</span> ListNode(p % <span class="number">10</span>);</span><br><span class="line">                resTemp = resTemp.next;</span><br><span class="line">                nextSum = p / <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = l1.val + nextSum;</span><br><span class="line">            resTemp.next = <span class="keyword">new</span> ListNode(p % <span class="number">10</span>);</span><br><span class="line">            resTemp = resTemp.next;</span><br><span class="line">            nextSum = p / <span class="number">10</span>;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (l2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = (l2.val + nextSum);</span><br><span class="line">            resTemp.next = <span class="keyword">new</span> ListNode(p % <span class="number">10</span>);</span><br><span class="line">            resTemp = resTemp.next;</span><br><span class="line">            nextSum = p / <span class="number">10</span>;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (nextSum != <span class="number">0</span>) resTemp.next = <span class="keyword">new</span> ListNode(nextSum);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Java-方式二："><a href="#Java-方式二：" class="headerlink" title="Java 方式二："></a>Java 方式二：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    ListNode p = l1, q = l2, curr = dummyHead;</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = carry + x + y;</span><br><span class="line">        carry = sum / <span class="number">10</span>;</span><br><span class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">        curr = curr.next;</span><br><span class="line">        <span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</span><br><span class="line">        <span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="C-方式一："><a href="#C-方式一：" class="headerlink" title="C 方式一："></a>C 方式一：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode* <span class="title">addTwoNumbers</span><span class="params">(struct ListNode* l1, struct ListNode* l2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x, y, num, flag=<span class="number">0</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">p</span> =</span> l1, *q = l2;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">cur</span> =</span> (struct ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ListNode));</span><br><span class="line">    cur-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">ret</span> =</span> cur;</span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span> || q!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x = (p!=<span class="literal">NULL</span>)?p-&gt;val:<span class="number">0</span>;</span><br><span class="line">        y = (q!=<span class="literal">NULL</span>)?q-&gt;val:<span class="number">0</span>;</span><br><span class="line">        num = x+y+flag;</span><br><span class="line">        flag = num/<span class="number">10</span>;</span><br><span class="line">        cur-&gt;next = (struct ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ListNode));</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">        cur-&gt;val = num%<span class="number">10</span>;</span><br><span class="line">        cur-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(q!=<span class="literal">NULL</span>)</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cur-&gt;next = (struct ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ListNode));</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">        cur-&gt;val = <span class="number">1</span>;</span><br><span class="line">        cur-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/31/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" data-id="ckmx6ov500000o8uy5ufh7sqc" data-title="14-最长公共前缀" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-14-最长公共前缀" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -129,68 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/31/14-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" data-id="ckmx69dwh0000jsuy3cioh3pw" data-title="14-最长公共前缀" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2-两数相加" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/31/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" class="article-date">
-  <time class="dt-published" datetime="2021-03-31T08:09:38.000Z" itemprop="datePublished">2021-03-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/31/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/">14-最长公共前缀</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><strong>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。</strong></p>
-<p><strong>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</strong></p>
-<p><strong>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</strong></p>
-<p><em>medium</em></p>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line"></span><br><span class="line">输出：7 -&gt; 0 -&gt; 8</span><br><span class="line"></span><br><span class="line">原因：342 + 465 &#x3D; 807</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="Java-方式一："><a href="#Java-方式一：" class="headerlink" title="Java 方式一："></a>Java 方式一：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        ListNode res = <span class="keyword">new</span> ListNode();</span><br><span class="line">        ListNode resTemp = res;</span><br><span class="line">        <span class="keyword">int</span> nextSum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>; <span class="comment">// 标识相加进1</span></span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> p;</span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</span><br><span class="line">                p = l1.val + l2.val;</span><br><span class="line">                res.val = p % <span class="number">10</span>;</span><br><span class="line">                nextSum = p / <span class="number">10</span>;</span><br><span class="line">                flag++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                p = l1.val + l2.val + nextSum;</span><br><span class="line">                resTemp.next = <span class="keyword">new</span> ListNode(p % <span class="number">10</span>);</span><br><span class="line">                resTemp = resTemp.next;</span><br><span class="line">                nextSum = p / <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = l1.val + nextSum;</span><br><span class="line">            resTemp.next = <span class="keyword">new</span> ListNode(p % <span class="number">10</span>);</span><br><span class="line">            resTemp = resTemp.next;</span><br><span class="line">            nextSum = p / <span class="number">10</span>;</span><br><span class="line">            l1 = l1.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (l2 != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = (l2.val + nextSum);</span><br><span class="line">            resTemp.next = <span class="keyword">new</span> ListNode(p % <span class="number">10</span>);</span><br><span class="line">            resTemp = resTemp.next;</span><br><span class="line">            nextSum = p / <span class="number">10</span>;</span><br><span class="line">            l2 = l2.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (nextSum != <span class="number">0</span>) resTemp.next = <span class="keyword">new</span> ListNode(nextSum);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="Java-方式二："><a href="#Java-方式二：" class="headerlink" title="Java 方式二："></a>Java 方式二：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">    ListNode dummyHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">    ListNode p = l1, q = l2, curr = dummyHead;</span><br><span class="line">    <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="keyword">null</span> || q != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> x = (p != <span class="keyword">null</span>) ? p.val : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> y = (q != <span class="keyword">null</span>) ? q.val : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = carry + x + y;</span><br><span class="line">        carry = sum / <span class="number">10</span>;</span><br><span class="line">        curr.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line">        curr = curr.next;</span><br><span class="line">        <span class="keyword">if</span> (p != <span class="keyword">null</span>) p = p.next;</span><br><span class="line">        <span class="keyword">if</span> (q != <span class="keyword">null</span>) q = q.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        curr.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="C-方式一："><a href="#C-方式一：" class="headerlink" title="C 方式一："></a>C 方式一：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode* <span class="title">addTwoNumbers</span><span class="params">(struct ListNode* l1, struct ListNode* l2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x, y, num, flag=<span class="number">0</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">p</span> =</span> l1, *q = l2;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">cur</span> =</span> (struct ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ListNode));</span><br><span class="line">    cur-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">ret</span> =</span> cur;</span><br><span class="line">    <span class="keyword">while</span>(p!=<span class="literal">NULL</span> || q!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x = (p!=<span class="literal">NULL</span>)?p-&gt;val:<span class="number">0</span>;</span><br><span class="line">        y = (q!=<span class="literal">NULL</span>)?q-&gt;val:<span class="number">0</span>;</span><br><span class="line">        num = x+y+flag;</span><br><span class="line">        flag = num/<span class="number">10</span>;</span><br><span class="line">        cur-&gt;next = (struct ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ListNode));</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">        cur-&gt;val = num%<span class="number">10</span>;</span><br><span class="line">        cur-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(q!=<span class="literal">NULL</span>)</span><br><span class="line">            q = q-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cur-&gt;next = (struct ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct ListNode));</span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">        cur-&gt;val = <span class="number">1</span>;</span><br><span class="line">        cur-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/31/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" data-id="ckmx69dwm0001jsuygqep4bqy" data-title="14-最长公共前缀" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/03/31/14-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" data-id="ckmx6ov550001o8uy1w0985ql" data-title="14-最长公共前缀" class="article-share-link">分享</a>
       
       
       
@@ -256,11 +256,11 @@
       <ul>
         
           <li>
-            <a href="/2021/03/31/14-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">14-最长公共前缀</a>
+            <a href="/2021/03/31/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/">14-最长公共前缀</a>
           </li>
         
           <li>
-            <a href="/2021/03/31/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/">14-最长公共前缀</a>
+            <a href="/2021/03/31/14-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">14-最长公共前缀</a>
           </li>
         
       </ul>
